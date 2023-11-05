@@ -1,51 +1,51 @@
 [
     {
-        "name": "Max Verstappen",
+        "fullName": "Max Verstappen",
         "team": "Red Bull Racing Honda",
         "position": 1
     },
     {
-        "name": "Lewis Hamilton",
+        "fullName": "Lewis Hamilton",
         "team": "Mercedes",
         "position": 2
     },
     {
-        "name": "Valtteri Bottas",
+        "fullName": "Valtteri Bottas",
         "team": "Mercedes",
         "position": 3
     },
     {
-        "name": "Sergio Perez",
+        "fullName": "Sergio Perez",
         "team": "Red Bull Racing Honda",
         "position": 4
     },
     {
-        "name": "Carlos Sainz",
+        "fullName": "Carlos Sainz",
         "team": "Ferrari",
         "position": 5
     },
     {
-        "name": "Lando Norris",
+        "fullName": "Lando Norris",
         "team": "McLaren Mercedes",
         "position": 6
     },
     {
-        "name": "? (Charles Leclerc)",
+        "fullName": "Charles Leclerc",
         "team": "Ferrari",
         "position": 7
     },
     {
-        "name": "Daniel Ricciardo",
+        "fullName": "Daniel Ricciardo",
         "team": "McLaren Mercedes",
         "position": 8
     },
     {
-        "name": "Pierre Gasly",
+        "fullName": "Pierre Gasly",
         "team": "AlphaTauri Honda",
         "position": 9
     },
     {
-        "name": "Fernando Alonso",
+        "fullName": "Fernando Alonso",
         "team": "Alpine Renault",
         "position": 10
     }
