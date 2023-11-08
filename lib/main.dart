@@ -1,12 +1,16 @@
 import 'dart:io' show Platform;
 
-import 'package:f1_ranking/config/app_config.dart';
-import 'package:f1_ranking/styles/app_styles.dart';
-import 'package:f1_ranking/views/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:provider/provider.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+import 'package:f1_ranking/config/app_config.dart';
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/viewmodels/driver_viewmodel.dart';
+import 'package:f1_ranking/viewmodels/user_viewmodel.dart';
+import 'package:f1_ranking/views/registration_screen.dart';
 
 void main() async {
   // In IOS we keep the status bar text dark
@@ -26,7 +30,15 @@ void main() async {
     FlutterNativeSplash.remove,
   );
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserViewmodel()),
+        ChangeNotifierProvider(create: (_) => DriverViewmodel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +49,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'F1 Ranking',
       theme: ThemeData(useMaterial3: true),
-      home: RegistrationScreen(),
+      home: const RegistrationScreen(),
       navigatorKey: appNavigatorKey,
       debugShowCheckedModeBanner: false,
     );

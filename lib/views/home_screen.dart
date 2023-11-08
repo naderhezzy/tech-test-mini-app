@@ -1,29 +1,35 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
-import 'package:f1_ranking/styles/app_styles.dart';
-import 'package:f1_ranking/utils/utils.dart';
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 
-import 'package:f1_ranking/models/driver_model.dart';
-import 'package:f1_ranking/viewmodels/driver_repository.dart';
-import 'package:f1_ranking/widgets/driver_tile.dart';
+import 'package:f1_ranking/utils/utils.dart';
 import 'package:f1_ranking/widgets/user_info.dart';
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/widgets/driver_tile.dart';
 import 'package:f1_ranking/widgets/logout_button.dart';
+import 'package:f1_ranking/viewmodels/user_viewmodel.dart';
+import 'package:f1_ranking/viewmodels/driver_viewmodel.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({
-    super.key,
-    required this.firstName,
-    required this.lastName,
-  });
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-  final String firstName;
-  final String lastName;
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-  final _driverRepository = DriverRepository();
+class _HomeScreenState extends State<HomeScreen> {
+  late UserViewmodel _userViewmodel;
+
   final _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    _userViewmodel = context.read<UserViewmodel>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +42,9 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             UserInfo(
-              firstName: firstName,
-              lastName: lastName,
+              // Reading values from viewmodel
+              firstName: _userViewmodel.firstName!,
+              lastName: _userViewmodel.lastName!,
             ),
             const LogoutButton(),
           ],
@@ -52,47 +59,46 @@ class HomeScreen extends StatelessWidget {
             topRight: Radius.circular(AppStyles.radiusExtraLarge),
           ),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(AppStyles.spacingLarge),
-              child: Text(
-                'Top 10 ranking 2021',
-                style: TextStyle(
-                  color: AppStyles.primaryColor,
-                  fontSize: AppStyles.fontSizeLarge,
-                  fontWeight: AppStyles.fontWeightBold,
-                  height: setHeight(0.07),
-                ),
-              ),
-            ),
-            Expanded(
-              child: FutureBuilder<List<DriverModel>>(
-                future: _driverRepository.getDrivers(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  } else {
-                    final List<DriverModel> drivers = snapshot.data!;
 
-                    // FadingEdgeScrollView used to add fading edges to the list
-                    return FadingEdgeScrollView.fromScrollView(
-                      child: ListView.builder(
-                        controller: _scrollController,
-                        itemCount: drivers.length,
-                        itemBuilder: (context, index) {
-                          final driver = drivers[index];
-                          return DriverTile(driver: driver);
-                        },
-                      ),
-                    );
-                  }
-                },
-              ),
-            ),
-          ],
+        // Listening to the viewmodel
+        child: Consumer<DriverViewmodel>(
+          builder: (context, driverViewmodel, _) {
+            if (driverViewmodel.isLoading) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: AppStyles.primaryColor,
+                ),
+              );
+            }
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(AppStyles.spacingLarge),
+                  child: Text(
+                    'Top 10 ranking 2021',
+                    style: TextStyle(
+                      color: AppStyles.primaryColor,
+                      fontSize: AppStyles.fontSizeLarge,
+                      fontWeight: AppStyles.fontWeightBold,
+                      height: setHeight(0.07),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: FadingEdgeScrollView.fromScrollView(
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: driverViewmodel.drivers.length,
+                      itemBuilder: (context, index) {
+                        final driver = driverViewmodel.drivers[index];
+                        return DriverTile(driver: driver);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
