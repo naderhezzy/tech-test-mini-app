@@ -1,7 +1,6 @@
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/views/registration_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/presentation/pages/registration_screen.dart';
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({

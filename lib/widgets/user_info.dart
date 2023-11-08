@@ -1,7 +1,6 @@
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/utils/utils.dart';
 import 'package:flutter/material.dart';
-
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/app/utils/utils.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({

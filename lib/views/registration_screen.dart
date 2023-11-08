@@ -3,20 +3,35 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
-import 'package:f1_ranking/app/utils/utils.dart';
-import 'package:f1_ranking/app/config/app_config.dart';
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/presentation/pages/home_screen.dart';
-import 'package:f1_ranking/presentation/widgets/next_button.dart';
-import 'package:f1_ranking/presentation/widgets/custom_text_field.dart';
+import 'package:f1_ranking/utils/utils.dart';
+import 'package:f1_ranking/config/app_config.dart';
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/views/home_screen.dart';
+import 'package:f1_ranking/widgets/next_button.dart';
+import 'package:f1_ranking/widgets/custom_text_field.dart';
+import 'package:f1_ranking/viewmodels/user_viewmodel.dart';
 
-class RegistrationScreen extends StatelessWidget {
-  RegistrationScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final _formKey = GlobalKey<FormState>();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
+
+  late UserViewmodel _userViewmodel;
+
+  @override
+  void initState() {
+    _userViewmodel = context.read<UserViewmodel>();
+    super.initState();
+  }
 
   String? _firstNameValidator(value) {
     if (value!.isEmpty) {
@@ -43,14 +58,14 @@ class RegistrationScreen extends StatelessWidget {
   void _onNextPressed(BuildContext context) {
     // Checks form validation and push
     if (_formKey.currentState!.validate()) {
+      _userViewmodel.firstName = _firstNameController.value.text;
+      _userViewmodel.lastName = _lastNameController.value.text;
+
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           opaque: false,
-          pageBuilder: (_, __, ___animation2) => HomeScreen(
-            firstName: _firstNameController.value.text,
-            lastName: _lastNameController.value.text,
-          ),
+          pageBuilder: (_, __, ___animation2) => const HomeScreen(),
           transitionDuration: const Duration(seconds: 0),
         ),
       );
