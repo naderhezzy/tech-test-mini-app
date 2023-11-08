@@ -1,0 +1,12 @@
+flutter_native_splash:
+  background_image: assets/images/splash-background.png
+
+  # The image parameter allows you to specify an image used in the splash screen.  It must be a
+  # png file and should be sized for 4x pixel density.
+  image: assets/images/f1-logo.png
+
+  android_12:
+    color: "#DE1B2E"
+    image: assets/images/splash-image-android12.png
+
+  fullscreen: true

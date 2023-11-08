@@ -1,8 +1,24 @@
+import 'package:f1_ranking/presentation/pages/registration_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'package:f1_ranking/presentation/pages/home_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
+import 'package:f1_ranking/app/config/app_config.dart';
+import 'package:f1_ranking/app/styles/app_styles.dart';
+
+void main() async {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: AppStyles.primaryColor,
+    ),
+  );
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Splash screen for one second
+  await Future.delayed(const Duration(seconds: 1), FlutterNativeSplash.remove);
+
   runApp(const MyApp());
 }
 
@@ -13,12 +29,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'F1 Ranking',
-      theme: ThemeData(
-        fontFamily: '',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+      theme: ThemeData(useMaterial3: true),
+      home: RegistrationScreen(),
+      navigatorKey: appNavigatorKey,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
