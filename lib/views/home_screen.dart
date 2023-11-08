@@ -1,16 +1,16 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fading_edge_scrollview/fading_edge_scrollview.dart';
 
-import 'package:f1_ranking/app/utils/utils.dart';
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/data/models/driver_model.dart';
-import 'package:f1_ranking/repositories/driver_repository.dart';
-import 'package:f1_ranking/presentation/widgets/driver_tile.dart';
-import 'package:f1_ranking/presentation/widgets/user_info.dart';
-import 'package:f1_ranking/presentation/widgets/logout_button.dart';
+import 'package:f1_ranking/models/driver_model.dart';
+import 'package:f1_ranking/viewmodels/driver_repository.dart';
+import 'package:f1_ranking/widgets/driver_tile.dart';
+import 'package:f1_ranking/widgets/user_info.dart';
+import 'package:f1_ranking/widgets/logout_button.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({

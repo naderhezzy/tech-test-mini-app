@@ -1,15 +1,15 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import 'package:f1_ranking/config/app_config.dart';
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/utils/utils.dart';
+import 'package:f1_ranking/views/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-import 'package:f1_ranking/app/utils/utils.dart';
-import 'package:f1_ranking/app/config/app_config.dart';
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/presentation/pages/home_screen.dart';
-import 'package:f1_ranking/presentation/widgets/next_button.dart';
-import 'package:f1_ranking/presentation/widgets/custom_text_field.dart';
+import 'package:f1_ranking/widgets/next_button.dart';
+import 'package:f1_ranking/widgets/custom_text_field.dart';
 
 class RegistrationScreen extends StatelessWidget {
   RegistrationScreen({super.key});

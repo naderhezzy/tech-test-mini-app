@@ -1,5 +1,5 @@
-import 'package:f1_ranking/app/config/app_config.dart';
-import 'package:f1_ranking/app/constants.dart';
+import 'package:f1_ranking/config/app_config.dart';
+import 'package:f1_ranking/constants.dart';
 
 // Methods to set responsive height and width
 

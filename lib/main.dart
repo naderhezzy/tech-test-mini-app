@@ -1,13 +1,12 @@
 import 'dart:io' show Platform;
 
+import 'package:f1_ranking/config/app_config.dart';
+import 'package:f1_ranking/styles/app_styles.dart';
+import 'package:f1_ranking/views/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-
-import 'package:f1_ranking/app/config/app_config.dart';
-import 'package:f1_ranking/app/styles/app_styles.dart';
-import 'package:f1_ranking/presentation/pages/registration_screen.dart';
 
 void main() async {
   // In IOS we keep the status bar text dark

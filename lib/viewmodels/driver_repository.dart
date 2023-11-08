@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
 
-import 'package:f1_ranking/data/models/driver_model.dart';
+import 'package:f1_ranking/models/driver_model.dart';
 
 class DriverRepository {
   Future<List<DriverModel>> getDrivers() async {
