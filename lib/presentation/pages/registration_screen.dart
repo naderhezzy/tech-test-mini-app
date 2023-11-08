@@ -59,8 +59,6 @@ class RegistrationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
-
     return Scaffold(
       body: Container(
         height: context.height,
@@ -102,7 +100,7 @@ class RegistrationScreen extends StatelessWidget {
               ),
               SizedBox(
                 // Reducing spacing between elements when keyboard is open
-                height: setHeight(200) - (keyboardHeight / 3),
+                height: setHeight(200) - (context.keyboardHeight / 3),
               ),
               Form(
                 key: _formKey,
@@ -125,7 +123,7 @@ class RegistrationScreen extends StatelessWidget {
                         ),
                         SizedBox(
                           // Reducing spacing between elements when keyboard is open
-                          height: setHeight(100) - (keyboardHeight / 7),
+                          height: setHeight(100) - (context.keyboardHeight / 7),
                         ),
                         NextButton(onPressed: () => _onNextPressed(context))
                       ],

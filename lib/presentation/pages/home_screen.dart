@@ -10,6 +10,7 @@ import 'package:f1_ranking/data/models/driver_model.dart';
 import 'package:f1_ranking/repositories/driver_repository.dart';
 import 'package:f1_ranking/presentation/widgets/driver_tile.dart';
 import 'package:f1_ranking/presentation/widgets/user_info.dart';
+import 'package:f1_ranking/presentation/widgets/logout_button.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({
@@ -30,11 +31,17 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppStyles.primaryColor,
       appBar: AppBar(
         toolbarHeight: setWidth(120),
-        title: UserInfo(
-          firstName: firstName,
-          lastName: lastName,
-        ),
         backgroundColor: AppStyles.primaryColor,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            UserInfo(
+              firstName: firstName,
+              lastName: lastName,
+            ),
+            const LogoutButton(),
+          ],
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(AppStyles.spacingLarge),

@@ -17,7 +17,9 @@ class AppStyles {
   static const FontWeight fontWeightBold = FontWeight.w700;
 
   // Spacings
-  static const double spacingSmall = 10.0;
+  static const double spacingExtraSmall = 6.0;
+  static const double spacingSmall = 8.0;
+  static const double spacingMidium = 10.0;
   static const double spacingLarge = 26.0;
 
   // Radius
@@ -31,16 +33,11 @@ class AppStyles {
   static const Color whiteColor = Colors.white;
   static const Color darkRedColor = Color(0xFFB51E1E);
   static const Color lightRedColor = Color(0xFFF84646);
+  static const Color blackColor = Color(0x0A000000);
 
   // text colors
   static const Color blackTextColor = Colors.black;
   static const Color headlineTextColor = Color(0xFF2C2A36);
   static const Color lightTextColor = Color(0xFF4D4A60);
   static const Color ultraLightTextColor = Color(0xFFE5E5E5);
-
-  // Gradients
-  static const List<Color> primaryButtonGradient = [
-    darkRedColor,
-    lightRedColor,
-  ];
 }

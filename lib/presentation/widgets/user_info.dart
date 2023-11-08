@@ -1,7 +1,7 @@
-import 'package:f1_ranking/app/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import 'package:f1_ranking/app/config/app_config.dart';
+import 'package:f1_ranking/app/styles/app_styles.dart';
+import 'package:f1_ranking/app/utils/utils.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({
@@ -17,17 +17,11 @@ class UserInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Image.asset(
-            'assets/images/avatar.png',
-            height: context.height * 0.10,
-            fit: BoxFit.cover,
-          ),
+        Image.asset(
+          height: setHeight(87),
+          'assets/images/avatar.png',
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: setWidth(12)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,7 +29,7 @@ class UserInfo extends StatelessWidget {
               'Good Morning',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: AppStyles.fontSizeLarge,
                 color: AppStyles.whiteColor,
               ),
             ),

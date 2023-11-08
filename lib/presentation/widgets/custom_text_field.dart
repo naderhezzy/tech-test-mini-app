@@ -1,5 +1,7 @@
-import 'package:f1_ranking/app/styles/app_styles.dart';
 import 'package:flutter/material.dart';
+
+import 'package:f1_ranking/app/utils/utils.dart';
+import 'package:f1_ranking/app/styles/app_styles.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -21,28 +23,31 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 6, bottom: 8),
+          padding: const EdgeInsets.only(
+            left: AppStyles.spacingExtraSmall,
+            bottom: AppStyles.spacingSmall,
+          ),
           child: Text(
             labelText,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: AppStyles.fontSizeExtraSmall,
               color: AppStyles.lightTextColor,
             ),
           ),
         ),
         SizedBox(
-          height: 55,
+          height: setHeight(55),
           child: TextFormField(
             controller: controller,
             validator: (value) => validator(value),
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: const TextStyle(
-                fontSize: 15,
+                fontSize: AppStyles.fontSizeExtraSmall,
                 color: AppStyles.ultraLightTextColor,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(AppStyles.radiusSmall),
                 borderSide: const BorderSide(
                   color: AppStyles.greenColor,
                 ),

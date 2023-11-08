@@ -1,8 +1,8 @@
-import 'package:f1_ranking/app/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
+import 'package:f1_ranking/app/utils/utils.dart';
+import 'package:f1_ranking/app/styles/app_styles.dart';
 import 'package:f1_ranking/data/models/driver_model.dart';
-import 'package:f1_ranking/app/config/app_config.dart';
 
 class DriverTile extends StatelessWidget {
   const DriverTile({super.key, required this.driver});
@@ -12,10 +12,8 @@ class DriverTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 84,
-      margin: const EdgeInsets.symmetric(
-        vertical: AppStyles.spacingLarge,
-      ),
+      height: setHeight(84),
+      margin: EdgeInsets.only(bottom: setHeight(AppStyles.spacingLarge)),
       decoration: ShapeDecoration(
         color: AppStyles.whiteColor,
         shape: RoundedRectangleBorder(
@@ -23,7 +21,7 @@ class DriverTile extends StatelessWidget {
         ),
         shadows: const [
           BoxShadow(
-            color: Color(0x0A000000),
+            color: AppStyles.blackColor,
             blurRadius: 15,
             offset: Offset(2, 2),
             spreadRadius: 2,
@@ -40,9 +38,9 @@ class DriverTile extends StatelessWidget {
               child: Text(
                 driver.position.toString(),
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: AppStyles.fontSizeMedium,
                   color: AppStyles.primaryColor,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: AppStyles.fontWeightBold,
                 ),
               ),
             ),
@@ -50,9 +48,9 @@ class DriverTile extends StatelessWidget {
           Flexible(
             flex: 5,
             child: ListTile(
-              contentPadding: const EdgeInsets.all(0.0),
+              contentPadding: EdgeInsets.zero,
               leading: CircleAvatar(
-                radius: context.height * 0.04,
+                radius: setHeight(30),
                 foregroundImage: AssetImage(
                   'assets/images/${(driver.fullName).toLowerCase().replaceAll(RegExp(r' '), '-')}.png',
                 ),
@@ -60,8 +58,8 @@ class DriverTile extends StatelessWidget {
               title: Text(
                 driver.fullName,
                 style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                  fontSize: AppStyles.fontSizeMedium,
+                  fontWeight: AppStyles.fontWeightMid,
                 ),
               ),
               subtitle: Text(driver.team),
