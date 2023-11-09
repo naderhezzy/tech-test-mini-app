@@ -1,19 +1,16 @@
-# Formula 1 Ranking App
+# MINTIT Technical Assignment
 
-#
+# Formula 1 Ranking App
 
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
 - [UI Screens](#ui-screens)
 - [State Management](#state-management)
 - [Data Loading](#data-loading)
 - [Validation](#validation)
 - [Configuration and Styles](#configuration-and-styles)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -27,8 +24,7 @@
 
 - I've also included a splash screen
 
-- BONUS:
-- As bonus features, I've implemented an app icon using Canva.com, which was not part of the exercise's requirements. I've also added (for testing purposes) a logout button to switch between screens easily when testing the APK on a real device.
+- BONUS: As bonus features, I've implemented an app icon using Canva.com, which was not part of the exercise's requirements. I've also added (for testing purposes) a logout button to switch between screens easily when testing the APK on a real device.
 
 ## Getting Started
 
